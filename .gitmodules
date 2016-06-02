@@ -1,0 +1,3 @@
+[submodule "map_store"]
+	path = map_store
+	url = https://github.com/minhnh/map_store.git
