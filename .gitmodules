@@ -1,3 +1,6 @@
 [submodule "map_store"]
 	path = map_store
 	url = https://github.com/minhnh/map_store.git
+[submodule "namespace_mux"]
+	path = namespace_mux
+	url = https://github.com/MohitShridhar/namespace_mux.git
