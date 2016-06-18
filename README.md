@@ -12,8 +12,9 @@ Meta repository for multi_map_navigation
         * GUI:
             * ```roslaunch multi_map_navigation map_settings.launch```
             * ```rosrun rviz rviz -d map_settings.rviz```
-             (map_settings.rviz under .../multi_map_navigation/rviz/)
+             (```map_settings.rviz``` under ```.../multi_map_navigation/rviz/```)
         * terminal?
+   * launch move base node: ```roslaunch multi_map_navigation move_base_sdp.launch```
 
 ### Maps management:
 * rename maps: ```rosservice call /rename_map "map_id: '87721635-3eed-4361-8d7b-52697165b690' new_name: 'BRS 069'"```
