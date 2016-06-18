@@ -1,0 +1,10 @@
+*~
+# tex files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.dvi
+*.pdf
+*.gz
