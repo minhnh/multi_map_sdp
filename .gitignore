@@ -8,3 +8,7 @@
 *.dvi
 *.pdf
 *.gz
+*.nav
+*.snm
+*.toc
+
