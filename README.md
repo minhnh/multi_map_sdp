@@ -1,5 +1,4 @@
-## Repository to run the multi map navigation package
-Meta repository for multi_map_navigation
+## Repository to run the multi map navigation package for SDP 2016 course
 
 ### Setting up
 * dependencies:
@@ -8,7 +7,8 @@ Meta repository for multi_map_navigation
 * launch steps:
     * ```roscore```
     * ```roslaunch mdr_bringup(_sim) robot.launch```
-    * add new maps (name main map BRS 069 to work with default launch file)
+    * start mongodb: ```sudo mongod --dbpath=/path/to/database```
+    * add new maps (name main map ```BRS 069``` to work with default launch file)
         * GUI:
             * ```roslaunch multi_map_navigation map_settings.launch```
             * ```rosrun rviz rviz -d map_settings.rviz```
