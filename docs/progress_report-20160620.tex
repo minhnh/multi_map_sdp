@@ -3,7 +3,6 @@
 %-------------------------------------------------
 %   THEMES & PACKAGES
 %-------------------------------------------------
-\usetheme[progressbar=frametitle]{metropolis}
 \usepackage{graphicx}
 
 %-------------------------------------------------
@@ -13,7 +12,6 @@
 \subtitle{Progress Report}
 \date{June 20, 2016}
 \author{Jose Mayoral, Octavio Arriaga, Minh Nguyen}
-\titlegraphic{\hfill\includegraphics[height=0.7cm]{images/h-brs-logo.jpg}}
 
 %-------------------------------------------------
 %   BEGIN
@@ -31,6 +29,7 @@
         \begin{itemize}
             \item Switching between multiple maps
             \item Wormhole feature for traversal between maps
+            \item Elevator Manager for transitions
         \end{itemize}
     \end{alertblock}
 \end{frame}
@@ -44,8 +43,8 @@
     \end{alertblock}
     \begin{alertblock}{Integration with robocup repository}
     \begin{itemize}
-        \item can run with move\_base
-        \item can load environments from the robocup repository
+        \item run with move\_base
+        \item reuses environment yaml files from the robocup repository
     \end{itemize}
     \end{alertblock}
 \end{frame}
@@ -60,6 +59,79 @@
             \item Adding map can be done in RVIZ by launching the map setting launch file and the corresponding rviz configuration file in the package.
             \item 
         \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Requirements}
+    \begin{alertblock}{Maps in Mongodb}
+        \begin{itemize}
+            \item Initialize Mongo database
+        		\item Maps must be loading before (not mapping just navigation).
+            \item $map\_setting$ launch file provided by $multi\_map\_navigation$ node.
+            \item Load maps to the server using yaml.
+		\end{itemize}       
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Limitations}
+    \begin{alertblock}{General Limitations}
+        \begin{itemize}
+            \item Definition File with declared wormholes.
+            \item Environments must be mapped before.
+            \item Wormholes must be added by hand.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Used Nodes}
+    \begin{alertblock}{$Multi\_Map\_Navigation$}
+        \begin{itemize}
+        \item $mongo\_wrapper\_ros: $ Interface ROS and Mongo.
+        \item $elevator\_manager:$ Manages transitions between maps.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Used Nodes (2)}
+    \begin{alertblock}{$map\_store$}
+        \begin{itemize}
+        		\item $map\_manager:$ Server which initialize and manages services related to maps:
+        		\begin{itemize}
+        			\item $list\_maps$
+        			\item $publish\_maps$
+        			\item $delete\_map$
+        			\item $rename\_map$
+        			\item $dynamic\_map$
+        			\item $set\_origin$
+        		\end{itemize}
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Used Nodes (3)}
+    \begin{alertblock}{$move\_base$}
+    		\begin{itemize}
+    		    			\item $map\_server: $ loads a map and get a costmap using the next listed node.
+    			\item $costmap\_2d: $ giving an image from $map_server$ and a reference frame it converts a map to costmap.
+    			\item $amcl$ giving costmap and reference and child frame it computes robot localization.
+
+    			\item $fake\_localization$, $global\_planner$ and $dwa\_local\_planner$, etc are involved as well but they work after.
+        \end{itemize}
+    \end{alertblock}    
+\end{frame}
+
+\begin{frame}{Problems?}
+	\begin{center}
+		\LARGE \textsc{\textbf{A LOT!!!!!!!!!!!!!!!!}}	
+	\end{center}
+\end{frame}
+
+\begin{frame}{Current Status}
+    \begin{alertblock}{Pending}
+    		\begin{itemize}
+		\item Costmap conversion is not working properly.
+		\item Test Navigation.
+        \end{itemize}   
     \end{alertblock}
 \end{frame}
 
